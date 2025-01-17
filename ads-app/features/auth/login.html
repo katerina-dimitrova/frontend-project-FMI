@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdsApp - Login</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <img
+      class="logo"
+      src="../../assets/images/AdsApp_logo.png"
+      alt="AdsApp Logo"
+    />
+    
+    <h1 class="app-title">Sign in to AdsApp</h1>
+
+    <button class="social-btn">
+      <img
+        src="../../assets/images/Google_logo.png"
+        alt="Google logo"
+      />
+      Sign in with Google
+    </button>
+
+    <button class="social-btn">
+      <img
+        src="../../assets/images/Apple_logo.png"
+        alt="Apple logo"
+      />
+      Sign in with Apple
+    </button>
+
+    <div class="or-container">
+      <div class="line"></div>
+      <span>OR</span>
+      <div class="line"></div>
+    </div>
+
+    <input
+      type="email"
+      class="input-field"
+      id="emailInput"
+      autocomplete="off"
+      placeholder="Email"
+    />
+    <input
+      type="password"
+      class="input-field"
+      id="passwordInput"
+      placeholder="Password"
+    />
+
+    <button class="main-btn" id="mainActionBtn">Sign up</button>
+
+    <p class="toggle-text" id="toggleText">
+      You already have an account?
+      <a href="#" id="toggleLink">Sign in</a>
+    </p>
+
+    <p class="error-message" id="errorMessage"></p>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
