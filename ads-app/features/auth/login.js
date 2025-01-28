@@ -1,3 +1,7 @@
+import { initializeAds } from '../../reusable/utils/repository.js';
+
+initializeAds();
+
 let isSignUpMode = true;
 
 const emailInput = document.getElementById("emailInput");
