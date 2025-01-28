@@ -2,9 +2,9 @@
   background-color: #5d0843;
   color: white;
   padding: 10px 20px;
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
 }
 
 .navbar-container {
@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1200px;
 }
 
 .logo {
@@ -35,6 +34,7 @@
   font-size: 16px;
   transition: color 0.3s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .nav-links li a:hover {
