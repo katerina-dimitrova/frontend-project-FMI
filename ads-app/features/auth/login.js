@@ -1,4 +1,4 @@
-import { initializeAds } from '../../reusable/utils/repository.js';
+import { initializeAds } from "../../reusable/utils/repository.js";
 
 initializeAds();
 
@@ -39,10 +39,10 @@ function handleMainAction() {
     return;
   }
 
-  const users = JSON.parse(localStorage.getItem("adsAppUsers")) || [];
+  const users = JSON.parse(localStorage.getItem("users")) || [];
 
   if (isSignUpMode) {
-    const existingUser = users.find((u) => u.email === email);
+    const existingUser = users.find((user) => user.email === email);
     if (existingUser) {
       showError("This email is already registered!");
       return;
@@ -50,21 +50,21 @@ function handleMainAction() {
 
     const newUser = { email, password };
     users.push(newUser);
-    localStorage.setItem("adsAppUsers", JSON.stringify(users));
-
-    window.location.href = "../home-page.html";
+    localStorage.setItem("users", JSON.stringify(users));
   } else {
     const existingUser = users.find(
-      (u) => u.email === email && u.password === password
+      (user) => user.email === email && user.password === password
     );
 
     if (!existingUser) {
-      showError("Invalid input data!");
+      showError("Invalid email or password!");
       return;
     }
-
-    window.location.href = "../../features/home/home.html";
   }
+
+  localStorage.setItem("isAuthenticated", true);
+
+  window.location.href = "../../features/home/home.html";
 }
 
 function updateFormText() {
