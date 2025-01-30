@@ -37,15 +37,25 @@ const defaultAds = [
   },
 ];
 
-export function initializeAds() {
+const users = [
+  {
+    email: "admin@gmail.com",
+    password: "admin",
+  },
+  {
+    email: "ads@gmail.com",
+    password: "ads",
+  },
+];
+
+export function initializeSystem() {
+  const storedUsers = localStorage.getItem("users");
   const storedAds = localStorage.getItem("ads");
 
+  if (!storedUsers) {
+    localStorage.setItem("users", JSON.stringify(users));
+  }
   if (!storedAds) {
     localStorage.setItem("ads", JSON.stringify(defaultAds));
-    console.log("Ads are saved in localStorage.");
-  } else {
-    console.log("Ads are already saved in localStorage.");
   }
 }
-
-initializeAds();

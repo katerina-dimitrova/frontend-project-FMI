@@ -1,6 +1,7 @@
-import { initializeAds } from "../../reusable/utils/repository.js";
+import { initializeSystem } from "../../reusable/utils/repository.js";
 
-initializeAds();
+initializeSystem();
+
 
 let isSignUpMode = false;
 
