@@ -1,4 +1,5 @@
 import { initializeSystem } from "../../reusable/utils/repository.js";
+import { createUser } from "../../reusable/utils/helpers.js";
 
 initializeSystem();
 
@@ -49,7 +50,7 @@ function handleMainAction() {
       return;
     }
 
-    const newUser = { email, password };
+    const newUser = createUser(email, password);
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
   } else {

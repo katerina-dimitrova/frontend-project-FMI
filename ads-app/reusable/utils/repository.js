@@ -1,3 +1,5 @@
+import { createUser } from "./helpers.js";
+
 const defaultAds = [
   {
     image: "../../assets/images/default_ad_image.jpg",
@@ -38,14 +40,8 @@ const defaultAds = [
 ];
 
 const users = [
-  {
-    email: "admin@gmail.com",
-    password: "admin",
-  },
-  {
-    email: "ads@gmail.com",
-    password: "ads",
-  },
+  createUser("admin@gmail.com", "admin"),
+  createUser("ads@gmail.com", "ads"),
 ];
 
 export function initializeSystem() {
