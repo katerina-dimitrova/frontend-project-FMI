@@ -2,7 +2,7 @@ import { initializeAds } from '../../reusable/utils/repository.js';
 
 initializeAds();
 
-let isSignUpMode = true;
+let isSignUpMode = false;
 
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
@@ -10,6 +10,7 @@ const mainActionBtn = document.getElementById("mainActionBtn");
 const toggleText = document.getElementById("toggleText");
 const toggleLink = document.getElementById("toggleLink");
 const errorMessage = document.getElementById("errorMessage");
+const appTitle = document.getElementById("appTitle");
 
 updateFormText();
 
@@ -62,18 +63,20 @@ function handleMainAction() {
       return;
     }
 
-    window.location.href = "../home-page.html";
+    window.location.href = "../../features/home/home.html";
   }
 }
 
 function updateFormText() {
   if (isSignUpMode) {
+    appTitle.textContent = "Sign up to Ads App";
     mainActionBtn.textContent = "Sign up";
-    toggleText.innerHTML = `You don't have an account? 
+    toggleText.innerHTML = `You already have an account? 
       <a href="#" id="toggleLink">Sign in</a>`;
   } else {
+    appTitle.textContent = "Sign in to Ads App";
     mainActionBtn.textContent = "Sign in";
-    toggleText.innerHTML = `You already have an account?
+    toggleText.innerHTML = `You don't have an account?
       <a href="#" id="toggleLink">Sign up</a>`;
   }
 
