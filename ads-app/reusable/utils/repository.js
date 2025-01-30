@@ -1,42 +1,12 @@
-import { createUser } from "./helpers.js";
+import { createUser, createAd } from "./helpers.js";
 
 const defaultAds = [
-  {
-    image: "../../assets/images/default_ad_image.jpg",
-    title: "Example add 1",
-    description: "Description",
-    price: "50",
-  },
-  {
-    image: "../../assets/images/default_ad_image.jpg",
-    title: "Example add 2",
-    description: "Description",
-    price: "100",
-  },
-  {
-    image: "../../assets/images/default_ad_image.jpg",
-    title: "Example add 3",
-    description: "Description.",
-    price: "150",
-  },
-  {
-    image: "../../assets/images/default_ad_image.jpg",
-    title: "Example add 4",
-    description: "Description",
-    price: "150",
-  },
-  {
-    image: "../../assets/images/default_ad_image.jpg",
-    title: "Example add 5",
-    description: "Description",
-    price: "150",
-  },
-  {
-    image: "../../assets/images/default_ad_image.jpg",
-    title: "Example add 6",
-    description: "Description",
-    price: "150",
-  },
+  createAd("Example add 1", "Description", "50"),
+  createAd("Example add 2", "Description", "100"),
+  createAd("Example add 3", "Description.", "150"),
+  createAd("Example add 4", "Description", "150"),
+  createAd("Example add 5", "Description", "150"),
+  createAd("Example add 6", "Description", "150"),
 ];
 
 const users = [
