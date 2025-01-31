@@ -1,9 +1,10 @@
 import { createAd } from "../../reusable/components/ad/ad.js";
 
-const isAuthenticated =
-  JSON.parse(localStorage.getItem("isAuthenticated")) || false;
+const token = JSON.parse(localStorage.getItem("token")) || {
+  isAuthenticated: false,
+};
 
-if (!isAuthenticated) {
+if (!token.isAuthenticated) {
   window.location.href = "../auth/login.html";
 }
 

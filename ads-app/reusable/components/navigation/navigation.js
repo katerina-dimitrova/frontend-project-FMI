@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const logout = document.getElementById("profile");
       logout.addEventListener("click", () => {
-        localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("token");
         window.location.href = "../../features/auth/login.html";
       });
     })
