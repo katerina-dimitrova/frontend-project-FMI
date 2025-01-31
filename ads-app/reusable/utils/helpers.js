@@ -9,12 +9,13 @@ export function createUser(email, password) {
     };
   }
 
-export function createAd(title, description, price, image = "../../assets/images/default_ad_image.jpg") {
+export function createAd(userEmail, title, description, price, image = "../../assets/images/default_ad_image.jpg") {
     if (!title || !description || !price || !image) {
       throw new Error("Title, description, price, and image are required");
     }
   
     return {
+      userEmail,
       title,
       description,
       price,
