@@ -64,7 +64,7 @@ function handleMainAction() {
     }
   }
 
-  localStorage.setItem("token", JSON.stringify({user: email, isAuthenticated: true}));
+  localStorage.setItem("token", JSON.stringify({userEmail: email, isAuthenticated: true}));
   window.location.href = "../../features/home/home.html";
 }
 
