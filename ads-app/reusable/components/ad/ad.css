@@ -1,4 +1,10 @@
-.ad-card {
+#ads-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+#ads-container .ad-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
@@ -7,23 +13,23 @@
     width: 200px;
 }
 
-.ad-image {
+#ads-container .ad-image {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
 }
 
-.ad-title {
+#ads-container .ad-title {
     font-size: 18px;
     margin: 8px 0;
 }
 
-.ad-description {
+#ads-container .ad-description {
     font-size: 14px;
     color: #555;
 }
 
-.ad-price {
+#ads-container .ad-price {
     font-weight: bold;
     margin: 8px 0;
 }
