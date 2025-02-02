@@ -1,4 +1,4 @@
-import { CATEGORIES } from "./constants";
+import { CATEGORIES } from "./constants.js";
 
 export function createUser(email, password) {
     if (!email || !password) {
