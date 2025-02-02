@@ -1,4 +1,4 @@
-export function createAd(data) {
+export function createAdHtml(data) {
     const adCard = document.createElement("div");
     adCard.className = "ad-card";
 

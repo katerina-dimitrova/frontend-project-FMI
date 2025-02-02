@@ -1,4 +1,4 @@
-import { createAd } from "../../reusable/components/ad/ad.js";
+import { createAdHtml } from "../../reusable/components/ad/ad.js";
 
 const token = JSON.parse(localStorage.getItem("token")) || {
   isAuthenticated: false,
@@ -15,7 +15,7 @@ function renderAds() {
   adsContainer.innerHTML = "";
 
   ads.forEach((adData) => {
-    const adElement = createAd(adData);
+    const adElement = createAdHtml(adData);
     adsContainer.appendChild(adElement);
   });
 }
