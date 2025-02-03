@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
     addContainer.style.display = "block";
     overlay.style.display = "block";
     document.body.classList.add("modal-active");
-});
+  });
 
-cancelButton.addEventListener("click", function () {
+  cancelButton.addEventListener("click", function () {
     addContainer.style.display = "none";
     overlay.style.display = "none";
     document.body.classList.remove("modal-active");
-});
+  });
 
   addForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -83,6 +83,21 @@ cancelButton.addEventListener("click", function () {
     }
   });
 
+  function deleteAd(adId) {
+    const ads = JSON.parse(localStorage.getItem("ads")) || [];
+    const adIndex = ads.findIndex((ad) => ad.id === adId);
+
+    if (adIndex === -1) {
+      alert("Ad not found");
+      return;
+    }
+
+    ads[adIndex].isDeleted = true;
+    localStorage.setItem("ads", JSON.stringify(ads));
+
+    renderAds();
+  }
+
   function renderAds() {
     const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
     const adsContainer = document.getElementById("ads-container");
@@ -90,7 +105,9 @@ cancelButton.addEventListener("click", function () {
 
     adsContainer.innerHTML = "";
 
-    const userAds = ads.filter((ad) => ad.userEmail === userEmail && !ad.isDeleted);
+    const userAds = ads.filter(
+      (ad) => ad.userEmail === userEmail && !ad.isDeleted
+    );
 
     if (userAds.length === 0) {
       adsContainer.innerHTML = "<p>You have no added ads.</p>";
@@ -108,7 +125,7 @@ cancelButton.addEventListener("click", function () {
       });
 
       deleteButton.addEventListener("click", function () {
-        deleteAd(adData);
+        deleteAd(adData.id);
       });
     });
   }
