@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const categorySelect = document.getElementById("ad-category");
   const overlay = document.getElementById("overlay");
   const cancelButton = document.getElementById("cancel-button");
+  const submitButton = document.getElementById("submit-button");
+  const editButton = document.getElementById("edit-button");
 
   Object.values(CATEGORIES).forEach((category) => {
     const option = document.createElement("option");
@@ -39,14 +41,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove("modal-active");
   });
 
-  addForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+  function getFormData() {
+    return {
+      title: document.getElementById("ad-title").value,
+      description: document.getElementById("ad-description").value,
+      price: document.getElementById("ad-price").value,
+      category: categorySelect.value,
+      image: document.getElementById("ad-image").value || "../../assets/images/default_ad_image.jpg",
+    };
+  }
 
-    const title = document.getElementById("ad-title").value;
-    const description = document.getElementById("ad-description").value;
-    const price = document.getElementById("ad-price").value;
-    const category = categorySelect.value;
-    const image = document.getElementById("ad-image").value || undefined;
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
 
     const token = JSON.parse(localStorage.getItem("token"));
     if (!token || !token.isAuthenticated) {
@@ -55,15 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const userEmail = token.userEmail;
+    const formData = getFormData();
+
 
     try {
       const newAd = createAd(
         userEmail,
-        title,
-        description,
-        price,
-        category,
-        image
+        formData.title,
+        formData.description,
+        formData.price,
+        formData.category,
+        formData.image
       );
 
       const ads = JSON.parse(localStorage.getItem("ads")) || [];
@@ -96,6 +104,59 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("ads", JSON.stringify(ads));
 
     renderAds();
+  }
+
+  function editAd(adData) {
+    addContainer.style.display = "block";
+    overlay.style.display = "block";
+    document.body.classList.add("modal-active");
+
+    document.getElementById("ad-title").value = adData.title;
+    document.getElementById("ad-description").value = adData.description;
+    document.getElementById("ad-price").value = adData.price;
+    document.getElementById("ad-category").value = adData.category;
+    document.getElementById("ad-image").value = adData.image;
+
+    submitButton.style.display = "none";
+    editButton.style.display = "block";
+
+    editButton.onclick = null;
+
+    editButton.onclick = function (event) {
+        event.preventDefault();
+
+        let ads = JSON.parse(localStorage.getItem("ads")) || [];
+        const adIndex = ads.findIndex((ad) => ad.id === adData.id);
+
+        if (adIndex === -1) {
+            alert("Ad not found");
+            return;
+        }
+
+        const formData = getFormData();
+
+        ads[adIndex] = {
+            ...ads[adIndex],
+            title: formData.title,
+            description: formData.description,
+            price: formData.price,
+            category: formData.category,
+            image: formData.image,
+        };
+
+        localStorage.setItem("ads", JSON.stringify(ads));
+
+        renderAds();
+
+        addButton.style.display = "block";
+        editButton.style.display = "none";
+
+        addContainer.style.display = "none";
+        overlay.style.display = "none";
+        document.body.classList.remove("modal-active");
+
+        addForm.reset();
+    };
   }
 
   function renderAds() {
