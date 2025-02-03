@@ -6,6 +6,7 @@ export function initializeMetaInfo() {
 
   if (!storedMetaInfo) {
     const metaInfo = {
+      usersCount: 0,
       adsCount: 0,
     };
 

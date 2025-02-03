@@ -9,15 +9,29 @@ function getNextAdId() {
   return adId;
 }
 
+function getNextUserId() {
+  const metaInfo = JSON.parse(localStorage.getItem("metaInfo"));
+  const usersCount =  metaInfo.usersCount + 1;
+  const userId = usersCount + 100;
+  metaInfo.usersCount = usersCount;
+  localStorage.setItem("metaInfo", JSON.stringify(metaInfo));
+  return userId;
+}
+
 export function createUser(email, password) {
   if (!email || !password) {
     throw new Error("Email and password are required");
   }
 
-  return {
+  const id = getNextUserId();
+
+  const newUser = {
+    id,
     email,
     password,
   };
+
+  return newUser;
 }
 
 export function createAd(
