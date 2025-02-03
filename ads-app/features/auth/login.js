@@ -1,6 +1,7 @@
-import { initializeSystem } from "../../reusable/utils/repository.js";
+import { initializeMetaInfo, initializeSystem } from "../../reusable/utils/repository.js";
 import { createUser } from "../../reusable/utils/helpers.js";
 
+initializeMetaInfo();
 initializeSystem();
 
 
