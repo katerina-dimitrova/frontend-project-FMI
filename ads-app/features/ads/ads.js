@@ -15,8 +15,19 @@ function renderAds() {
   adsContainer.innerHTML = "";
 
   ads.forEach((adData) => {
-    const adElement = createAdHtml(adData);
+    const adElement = createAdHtml(adData, "Add to cart", "Favorites");
     adsContainer.appendChild(adElement);
+
+    const cartButton = adElement.querySelector(".left-btn");
+    const favouritesButton = adElement.querySelector(".right-btn");
+
+    cartButton.addEventListener("click", function () {
+      addToCart(adData);
+    });
+
+    favouritesButton.addEventListener("click", function () {
+      addToFavourites(adData);
+    });
   });
 }
 
