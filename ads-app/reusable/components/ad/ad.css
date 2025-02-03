@@ -33,3 +33,25 @@
     font-weight: bold;
     margin: 8px 0;
 }
+
+#ads-container .ad-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#ads-container .left-btn, #ads-container .right-btn {
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    background-color: #953392;
+    color: white;
+}
+
+#ads-container .left-btn:hover, #ads-container .right-btn:hover {
+    background-color: #560555;
+}
