@@ -2,7 +2,7 @@ import { CATEGORIES } from "./constants.js";
 
 function getNextAdId() {
   const metaInfo = JSON.parse(localStorage.getItem("metaInfo"));
-  const adsCount =  metaInfo.adsCount + 1;
+  const adsCount = metaInfo.adsCount + 1;
   const adId = adsCount + 1000;
   metaInfo.adsCount = adsCount;
   localStorage.setItem("metaInfo", JSON.stringify(metaInfo));
@@ -11,7 +11,7 @@ function getNextAdId() {
 
 function getNextUserId() {
   const metaInfo = JSON.parse(localStorage.getItem("metaInfo"));
-  const usersCount =  metaInfo.usersCount + 1;
+  const usersCount = metaInfo.usersCount + 1;
   const userId = usersCount + 100;
   metaInfo.usersCount = usersCount;
   localStorage.setItem("metaInfo", JSON.stringify(metaInfo));
@@ -56,16 +56,15 @@ export function createAd(
     );
   }
 
-  const id = getNextAdId();
-
   const newAd = {
-    id,
+    id: getNextAdId(),
     userEmail,
     title,
     description,
     price,
     category,
     image,
+    isDeleted: false,
   };
 
   return newAd;

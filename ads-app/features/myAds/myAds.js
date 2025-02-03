@@ -90,7 +90,7 @@ cancelButton.addEventListener("click", function () {
 
     adsContainer.innerHTML = "";
 
-    const userAds = ads.filter((ad) => ad.userEmail === userEmail);
+    const userAds = ads.filter((ad) => ad.userEmail === userEmail && !ad.isDeleted);
 
     if (userAds.length === 0) {
       adsContainer.innerHTML = "<p>You have no added ads.</p>";

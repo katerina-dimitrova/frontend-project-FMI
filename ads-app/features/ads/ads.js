@@ -14,7 +14,10 @@ function renderAds() {
 
   adsContainer.innerHTML = "";
 
-  ads.forEach((adData) => {
+  const filteredAds = ads.filter((ad) => !ad.isDeleted);
+
+
+  filteredAds.forEach((adData) => {
     const adElement = createAdHtml(adData, "Add to cart", "Favorites");
     adsContainer.appendChild(adElement);
 
