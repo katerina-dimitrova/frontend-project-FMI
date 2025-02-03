@@ -56,8 +56,6 @@ cancelButton.addEventListener("click", function () {
 
     const userEmail = token.userEmail;
 
-    console.log(image);
-
     try {
       const newAd = createAd(
         userEmail,
@@ -99,8 +97,19 @@ cancelButton.addEventListener("click", function () {
     }
 
     userAds.forEach((adData) => {
-      const adElement = createAdHtml(adData);
+      const adElement = createAdHtml(adData, "Edit", "Delete");
       adsContainer.appendChild(adElement);
+
+      const editButton = adElement.querySelector(".left-btn");
+      const deleteButton = adElement.querySelector(".right-btn");
+
+      editButton.addEventListener("click", function () {
+        editAd(adData);
+      });
+
+      deleteButton.addEventListener("click", function () {
+        deleteAd(adData);
+      });
     });
   }
 });
