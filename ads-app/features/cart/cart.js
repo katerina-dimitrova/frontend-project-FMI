@@ -26,6 +26,10 @@ function renderAds() {
     (ad) => currentUser.cartAds.includes(ad.id) && !ad.isDeleted
   );
 
+  if (!filteredAds.length) {
+    adsContainer.innerHTML = "<h2>No ads in cart</h2>";
+  }
+
   filteredAds.forEach((adData) => {
     const adElement = createAdHtml(adData, "Remove", "Favourites");
     adsContainer.appendChild(adElement);
@@ -35,16 +39,19 @@ function renderAds() {
 
     removeFromCartButton.addEventListener("click", function () {
       removeFromCart(adData.id);
+      renderAds();
     });
 
     favouritesButton.addEventListener("click", function () {
       addToFavourites(adData.id);
+      renderAds();
     });
 
     if (currentUser.favouriteAds.includes(adData.id)) {
       favouritesButton.innerText = "In favourites";
       favouritesButton.addEventListener("click", function () {
         removeFromFavourites(adData.id);
+        renderAds();
       });
     }
   });

@@ -86,7 +86,6 @@ export function addToCart(adId) {
       localStorage.setItem("users", JSON.stringify(users));
     }
   }
-  renderAds();
 }
 
 export function removeFromCart(adId) {
@@ -100,7 +99,6 @@ export function removeFromCart(adId) {
     );
     localStorage.setItem("users", JSON.stringify(users));
   }
-  renderAds();
 }
 
 export function addToFavourites(adId) {
@@ -114,7 +112,6 @@ export function addToFavourites(adId) {
       localStorage.setItem("users", JSON.stringify(users));
     }
   }
-  renderAds();
 }
 
 export function removeFromFavourites(adId) {
@@ -128,5 +125,4 @@ export function removeFromFavourites(adId) {
     );
     localStorage.setItem("users", JSON.stringify(users));
   }
-  renderAds();
 }
