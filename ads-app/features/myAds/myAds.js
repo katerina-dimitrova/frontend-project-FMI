@@ -163,11 +163,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
     const adsContainer = document.getElementById("ads-container");
     const ads = JSON.parse(localStorage.getItem("ads")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
     adsContainer.innerHTML = "";
 
+    const currentUser = users.find(user => user.email === userEmail);
+
     const userAds = ads.filter(
-      (ad) => ad.userEmail === userEmail && !ad.isDeleted
+      (ad) => currentUser.addedAds.includes(ad.id) && !ad.isDeleted
     );
 
     if (userAds.length === 0) {
