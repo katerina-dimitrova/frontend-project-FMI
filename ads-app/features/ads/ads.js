@@ -8,7 +8,22 @@ if (!token.isAuthenticated) {
   window.location.href = "../auth/login.html";
 }
 
+function addToFavourites(adId) {
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex(user => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    if (!users[userIndex].favouriteAds.includes(adId)) {
+      users[userIndex].favouriteAds.push(adId);
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  }
+}
+
+
 function renderAds() {
+
   const adsContainer = document.getElementById("ads-container");
   const ads = JSON.parse(localStorage.getItem("ads"));
 
@@ -18,7 +33,7 @@ function renderAds() {
 
 
   filteredAds.forEach((adData) => {
-    const adElement = createAdHtml(adData, "Add to cart", "Favorites");
+    const adElement = createAdHtml(adData, "Add to cart", "Favourites");
     adsContainer.appendChild(adElement);
 
     const cartButton = adElement.querySelector(".left-btn");
@@ -29,7 +44,8 @@ function renderAds() {
     });
 
     favouritesButton.addEventListener("click", function () {
-      addToFavourites(adData);
+      addToFavourites(adData.id);
+      favouritesButton.innerText = "In favourites";
     });
   });
 }
