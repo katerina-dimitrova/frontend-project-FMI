@@ -32,6 +32,7 @@ export function createUser(email, password) {
     password,
     addedAds: [],
     favouriteAds: [],
+    cartAds: [],
   };
 
   return newUser;

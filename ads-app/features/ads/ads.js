@@ -21,6 +21,18 @@ function addToFavourites(adId) {
   }
 }
 
+function addToCart(adId) {
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex(user => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    if (!users[userIndex].cartAds.includes(adId)) {
+      users[userIndex].cartAds.push(adId);
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  }
+}
 
 function renderAds() {
 
@@ -40,7 +52,8 @@ function renderAds() {
     const favouritesButton = adElement.querySelector(".right-btn");
 
     cartButton.addEventListener("click", function () {
-      addToCart(adData);
+      addToCart(adData.id);
+      cartButton.innerText = "In the cart";
     });
 
     favouritesButton.addEventListener("click", function () {
