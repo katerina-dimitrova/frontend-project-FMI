@@ -1,4 +1,9 @@
 import { createAdHtml } from "../../reusable/components/ad/ad.js";
+import {
+  removeFromCart,
+  addToFavourites,
+  removeFromFavourites,
+} from "../../reusable/utils/helpers.js";
 
 const token = JSON.parse(localStorage.getItem("token")) || {
   isAuthenticated: false,
@@ -6,34 +11,6 @@ const token = JSON.parse(localStorage.getItem("token")) || {
 
 if (!token.isAuthenticated) {
   window.location.href = "../auth/login.html";
-}
-
-function removeFromCart(adId) {
-  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-  let userIndex = users.findIndex((user) => user.email === userEmail);
-
-  if (userIndex !== -1) {
-    users[userIndex].cartAds = users[userIndex].cartAds.filter(
-      (id) => id !== adId
-    );
-    localStorage.setItem("users", JSON.stringify(users));
-  }
-  renderAds();
-}
-
-function addToFavourites(adId) {
-  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-  let userIndex = users.findIndex((user) => user.email === userEmail);
-
-  if (userIndex !== -1) {
-    if (!users[userIndex].favouriteAds.includes(adId)) {
-      users[userIndex].favouriteAds.push(adId);
-      localStorage.setItem("users", JSON.stringify(users));
-    }
-  }
-  renderAds();
 }
 
 function renderAds() {
@@ -66,6 +43,9 @@ function renderAds() {
 
     if (currentUser.favouriteAds.includes(adData.id)) {
       favouritesButton.innerText = "In favourites";
+      favouritesButton.addEventListener("click", function () {
+        removeFromFavourites(adData.id);
+      });
     }
   });
 }

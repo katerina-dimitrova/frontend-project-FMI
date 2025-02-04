@@ -1,5 +1,5 @@
 import { CATEGORIES } from "./constants.js";
-import {updateUserAds} from "./repository.js";
+import { updateUserAds } from "./repository.js";
 
 function getNextAdId() {
   const metaInfo = JSON.parse(localStorage.getItem("metaInfo"));
@@ -73,4 +73,60 @@ export function createAd(
 
   updateUserAds(userEmail, newAd.id);
   return newAd;
+}
+
+export function addToCart(adId) {
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex((user) => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    if (!users[userIndex].cartAds.includes(adId)) {
+      users[userIndex].cartAds.push(adId);
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  }
+  renderAds();
+}
+
+export function removeFromCart(adId) {
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex((user) => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    users[userIndex].cartAds = users[userIndex].cartAds.filter(
+      (id) => id !== adId
+    );
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+  renderAds();
+}
+
+export function addToFavourites(adId) {
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex((user) => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    if (!users[userIndex].favouriteAds.includes(adId)) {
+      users[userIndex].favouriteAds.push(adId);
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  }
+  renderAds();
+}
+
+export function removeFromFavourites(adId) {
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex((user) => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    users[userIndex].favouriteAds = users[userIndex].favouriteAds.filter(
+      (id) => id !== adId
+    );
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+  renderAds();
 }
