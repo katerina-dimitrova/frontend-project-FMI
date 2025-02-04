@@ -19,6 +19,7 @@ function addToFavourites(adId) {
       localStorage.setItem("users", JSON.stringify(users));
     }
   }
+  renderAds();
 }
 
 function addToCart(adId) {
@@ -32,15 +33,18 @@ function addToCart(adId) {
       localStorage.setItem("users", JSON.stringify(users));
     }
   }
+  renderAds();
 }
 
 function renderAds() {
-
+  const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const currentUser = users.find(user => user.email === userEmail);
   const adsContainer = document.getElementById("ads-container");
   const ads = JSON.parse(localStorage.getItem("ads"));
 
   adsContainer.innerHTML = "";
-
+ 
   const filteredAds = ads.filter((ad) => !ad.isDeleted);
 
 
@@ -53,13 +57,19 @@ function renderAds() {
 
     cartButton.addEventListener("click", function () {
       addToCart(adData.id);
-      cartButton.innerText = "In the cart";
     });
 
     favouritesButton.addEventListener("click", function () {
       addToFavourites(adData.id);
-      favouritesButton.innerText = "In favourites";
     });
+
+    if (currentUser.favouriteAds.includes(adData.id)) {
+      favouritesButton.innerText = "In favourites";
+    }
+
+    if (currentUser.cartAds.includes(adData.id)) {
+      cartButton.innerText = "In the cart";
+    }
   });
 }
 
