@@ -1,4 +1,5 @@
 import { CATEGORIES } from "./constants.js";
+import {updateUserAds} from "./repository.js";
 
 function getNextAdId() {
   const metaInfo = JSON.parse(localStorage.getItem("metaInfo"));
@@ -29,6 +30,7 @@ export function createUser(email, password) {
     id,
     email,
     password,
+    addedAds: [],
   };
 
   return newUser;
@@ -67,5 +69,6 @@ export function createAd(
     isDeleted: false,
   };
 
+  updateUserAds(userEmail, newAd.id);
   return newAd;
 }

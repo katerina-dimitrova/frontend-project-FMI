@@ -14,6 +14,16 @@ export function initializeMetaInfo() {
   }
 }
 
+export function updateUserAds(userEmail, adId) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex(user => user.email === userEmail);
+
+  if (userIndex !== -1) {
+    users[userIndex].addedAds.push(adId);
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+}
+
 export function initializeSystem() {
   const storedUsers = localStorage.getItem("users");
   const storedAds = localStorage.getItem("ads");
