@@ -6,12 +6,39 @@ import {
   removeFromCart,
 } from "../../reusable/utils/helpers.js";
 
+import { setupSearchBar } from "../../reusable/components/searchBar/searchBar.js";
+
 const token = JSON.parse(localStorage.getItem("token")) || {
   isAuthenticated: false,
 };
 
 if (!token.isAuthenticated) {
   window.location.href = "../auth/login.html";
+}
+
+let filterFunction = null;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchBarContainer = document.getElementById("search-bar-container");
+
+  if (searchBarContainer) {
+    fetch("../../reusable/components/searchBar/searchBar.html")
+      .then((response) => response.text())
+      .then((html) => {
+        searchBarContainer.innerHTML = html;
+        setupSearchBar(updateFilter);
+      })
+      .catch((error) => console.error("Error loading search bar:", error));
+  } else {
+    console.error("search-bar-container not found");
+  }
+
+  renderAds();
+});
+
+function updateFilter(newFilterFunction) {
+  filterFunction = newFilterFunction;
+  renderAds();
 }
 
 function renderAds() {
@@ -23,7 +50,9 @@ function renderAds() {
 
   adsContainer.innerHTML = "";
 
-  const filteredAds = ads.filter((ad) => !ad.isDeleted);
+  const filteredAds = filterFunction
+    ? ads.filter(filterFunction)
+    : ads.filter((ad) => !ad.isDeleted);
 
   if (!filteredAds.length) {
     adsContainer.innerHTML = "<h2>No ads available</h2>";
