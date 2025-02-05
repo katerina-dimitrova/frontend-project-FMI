@@ -56,3 +56,18 @@ export function setupCategoryFilter(updateFilter) {
     categoriesContainer.appendChild(categoryItem);
   });
 }
+
+export function setupPriceFilter(updateSorting) {
+  const priceFilter = document.getElementById("price-filter");
+
+  if (!priceFilter) {
+    console.error("Price filter not found");
+    return;
+  }
+
+  priceFilter.addEventListener("change", function () {
+    const sortOrder = priceFilter.value;
+
+    updateSorting(sortOrder);
+  });
+}

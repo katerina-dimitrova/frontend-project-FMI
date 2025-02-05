@@ -9,6 +9,7 @@ import {
 import {
   setupSearchBar,
   setupCategoryFilter,
+  setupPriceFilter,
 } from "../../reusable/components/searchBar/searchBar.js";
 
 const token = JSON.parse(localStorage.getItem("token")) || {
@@ -20,6 +21,7 @@ if (!token.isAuthenticated) {
 }
 
 let filterFunction = null;
+let sortOrder = "default";
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchBarContainer = document.getElementById("search-bar-container");
@@ -31,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         searchBarContainer.innerHTML = html;
         setupSearchBar(updateFilter);
         setupCategoryFilter(updateFilter);
+        setupPriceFilter(updateSorting);
       })
       .catch((error) => console.error("Error loading search bar:", error));
   } else {
@@ -42,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function updateFilter(newFilterFunction) {
   filterFunction = newFilterFunction;
+  renderAds();
+}
+
+function updateSorting(newSortOrder) {
+  sortOrder = newSortOrder;
   renderAds();
 }
 
@@ -57,6 +65,12 @@ function renderAds() {
   const filteredAds = filterFunction
     ? ads.filter(filterFunction)
     : ads.filter((ad) => !ad.isDeleted);
+
+  if (sortOrder === "ascending") {
+    filteredAds.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "descending") {
+    filteredAds.sort((a, b) => b.price - a.price);
+  }
 
   if (!filteredAds.length) {
     adsContainer.innerHTML = "<h2>No ads available</h2>";
