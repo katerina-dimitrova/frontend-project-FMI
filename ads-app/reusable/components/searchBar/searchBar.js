@@ -1,3 +1,5 @@
+import { CATEGORIES } from "../../utils/constants.js";
+
 export function setupSearchBar(updateFilter) {
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
@@ -17,5 +19,40 @@ export function setupSearchBar(updateFilter) {
       : null;
 
     updateFilter(newFilterFunction);
+  });
+}
+
+export function setupCategoryFilter(updateFilter) {
+  const categoriesContainer = document.getElementById("categories-container");
+
+  if (!categoriesContainer) {
+    console.error("Categories container not found");
+    return;
+  }
+
+  categoriesContainer.innerHTML = "";
+
+  Object.entries(CATEGORIES).forEach(([key, category]) => {
+    const categoryItem = document.createElement("div");
+    categoryItem.classList.add("category-item");
+    categoryItem.dataset.category = category;
+
+    const icon = document.createElement("img");
+    icon.src = `../../assets/images/${key.toLowerCase()}.png`;
+    icon.alt = category;
+    icon.classList.add("category-icon");
+
+    const name = document.createElement("span");
+    name.textContent = category;
+    name.classList.add("category-name");
+
+    categoryItem.appendChild(icon);
+    categoryItem.appendChild(name);
+
+    categoryItem.addEventListener("click", () => {
+      updateFilter((ad) => ad.category === category);
+    });
+
+    categoriesContainer.appendChild(categoryItem);
   });
 }

@@ -6,7 +6,10 @@ import {
   removeFromCart,
 } from "../../reusable/utils/helpers.js";
 
-import { setupSearchBar } from "../../reusable/components/searchBar/searchBar.js";
+import {
+  setupSearchBar,
+  setupCategoryFilter,
+} from "../../reusable/components/searchBar/searchBar.js";
 
 const token = JSON.parse(localStorage.getItem("token")) || {
   isAuthenticated: false,
@@ -27,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((html) => {
         searchBarContainer.innerHTML = html;
         setupSearchBar(updateFilter);
+        setupCategoryFilter(updateFilter);
       })
       .catch((error) => console.error("Error loading search bar:", error));
   } else {

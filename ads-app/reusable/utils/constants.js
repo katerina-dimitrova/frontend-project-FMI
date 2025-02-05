@@ -1,9 +1,10 @@
 export const CATEGORIES = {
     ELECTRONICS: "Electronics",
     VEHICLES: "Vehicles",
-    REAL_ESTATE: "Real estate",
+    FURNITURE: "Furniture",
     FASHION: "Fashion",
     HOME_APPLIANCES: "Home appliances",
     SPORTS: "Sports",
+    OFFICE: "Office",
     OTHERS: "Others",
 };
