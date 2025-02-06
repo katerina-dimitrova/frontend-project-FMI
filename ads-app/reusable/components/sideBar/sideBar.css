@@ -26,6 +26,7 @@
 
 .sidebar-links a:hover {
     background: #a49da8;
+    cursor: pointer;
 }
 
 .main {
