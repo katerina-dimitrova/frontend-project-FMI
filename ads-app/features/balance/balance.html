@@ -20,11 +20,21 @@
 
 <body>
   <header id="navbar"></header>
-  <div>
-  <div id="sidebar-container"></div>
-  <main>
-    <div id="ads-container"></div>
-  </main>
+  <div class="content">
+    <div id="sidebar-container"></div>
+    <main>
+      <h1>My Balance</h1>
+      <h2>Current Balance: <span id="balance-amount">Loading...</span> лв.</h2>
+
+      <div class="balance-actions">
+        <input type="number" id="amount" placeholder="Enter amount">
+        <div class="buttons">
+          <button id="deposit-button">Deposit</button>
+          <button id="withdraw-button">Withdraw</button>
+        </div>
+      </div>
+      
+    </main>
   </div>
   <footer id="footer"></footer>
 </body>

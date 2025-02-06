@@ -33,6 +33,8 @@ export function createUser(email, password) {
     addedAds: [],
     favouriteAds: [],
     cartAds: [],
+    balance: 0,
+    transactions: [],
   };
 
   return newUser;
