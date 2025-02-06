@@ -15,12 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menuToggle.addEventListener("click", () => {
         navLinks.classList.toggle("active");
       });
-
-      const logout = document.getElementById("profile");
-      logout.addEventListener("click", () => {
-        localStorage.removeItem("token");
-        window.location.href = "../../features/auth/login.html";
-      });
     })
     .catch((error) => {
       console.error("Error loading navbar:", error);
