@@ -20,10 +20,25 @@
 
 <body>
   <header id="navbar"></header>
-  <div>
+  <div class="content">
   <div id="sidebar-container"></div>
   <main>
-    <div id="ads-container"></div>
+    <h1>Edit Profile</h1>
+        <form id="profile-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" disabled>
+
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone">
+
+            <label for="preferences">Preferences:</label>
+            <textarea id="preferences" placeholder="Enter your preferences..."></textarea>
+
+            <button type="submit">Save Changes</button>
+        </form>
   </main>
   </div>
   <footer id="footer"></footer>

@@ -35,6 +35,9 @@ export function createUser(email, password) {
     cartAds: [],
     balance: 0,
     transactions: [],
+    name: "",
+    phone: "",
+    preferences: "",
   };
 
   return newUser;
