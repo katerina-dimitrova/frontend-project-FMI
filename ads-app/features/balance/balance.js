@@ -1,3 +1,11 @@
+const token = JSON.parse(localStorage.getItem("token")) || {
+    isAuthenticated: false,
+  };
+  
+  if (!token.isAuthenticated) {
+    window.location.href = "../auth/login.html";
+  }
+
 if (document.getElementById("balance-amount")) {
   document.addEventListener("DOMContentLoaded", function () {
     const balanceAmount = document.getElementById("balance-amount");
