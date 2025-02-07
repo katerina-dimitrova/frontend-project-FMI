@@ -32,6 +32,8 @@ export function initializeSystem() {
     const users = [
       createUser("admin@gmail.com", "admin"),
       createUser("ads@gmail.com", "ads"),
+      createUser("test@gmail.com", "test"),
+      createUser("new@gmail.com", "new"),
     ];
 
     localStorage.setItem("users", JSON.stringify(users));
@@ -39,12 +41,13 @@ export function initializeSystem() {
 
   if (!storedAds) {
     const defaultAds = [
-      createAd("ads@gmail.com", "Example add 1", "Description", "50", CATEGORIES.ELECTRONICS),
+      createAd("admin@gmail.com", "Example add 1", "Description", "50", CATEGORIES.ELECTRONICS),
+      createAd("admin@gmail.com", "Example add 6", "Description", "150", CATEGORIES.OFFICE),
       createAd("ads@gmail.com", "Example add 2", "Description", "100", CATEGORIES.VEHICLES),
       createAd("ads@gmail.com", "Example add 3", "Description.", "150", CATEGORIES.FURNITURE),
       createAd("ads@gmail.com", "Example add 4", "Description", "150", CATEGORIES.FASHION),
-      createAd("ads@gmail.com", "Example add 5", "Description", "150", CATEGORIES.HOME_APPLIANCES),
-      createAd("ads@gmail.com", "Example add 6", "Description", "150", CATEGORIES.SPORTS),
+      createAd("test@gmail.com", "Example add 5", "Description", "150", CATEGORIES.HOME_APPLIANCES),
+      createAd("test@gmail.com", "Example add 6", "Description", "150", CATEGORIES.SPORTS),
     ];
 
     localStorage.setItem("ads", JSON.stringify(defaultAds));
