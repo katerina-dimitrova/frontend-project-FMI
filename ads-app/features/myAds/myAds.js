@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentUser = users.find(user => user.email === userEmail);
 
     const userAds = ads.filter(
-      (ad) => currentUser.addedAds.includes(ad.id) && !ad.isDeleted
+      (ad) => currentUser.addedAds.includes(ad.id) && !ad.isDeleted && !ad.isSold
     );
 
     if (userAds.length === 0) {

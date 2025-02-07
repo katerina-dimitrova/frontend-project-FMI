@@ -23,7 +23,7 @@ function renderAds() {
   adsContainer.innerHTML = "";
 
   const filteredAds = ads.filter(
-    (ad) => currentUser.favouriteAds.includes(ad.id) && !ad.isDeleted
+    (ad) => currentUser.favouriteAds.includes(ad.id) && !ad.isDeleted && !ad.isSold
   );
 
   if (!filteredAds.length) {

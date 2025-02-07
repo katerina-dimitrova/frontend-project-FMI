@@ -71,6 +71,7 @@ export function createAd(
     category,
     image,
     isDeleted: false,
+    isSold: false,
   };
 
   updateUserAds(userEmail, newAd.id);
