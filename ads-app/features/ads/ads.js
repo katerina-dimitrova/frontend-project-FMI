@@ -34,6 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
         setupSearchBar(updateFilter);
         setupCategoryFilter(updateFilter);
         setupPriceFilter(updateSorting);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedCategory = urlParams.get("category");
+
+        if (selectedCategory) {
+          updateFilter((ad) => ad.category === selectedCategory);
+          window.history.replaceState(
+            {},
+            document.title,
+            "/ads-app/features/ads/ads.html"
+          );
+        }
       })
       .catch((error) => console.error("Error loading search bar:", error));
   } else {
