@@ -23,18 +23,17 @@ h1 {
 }
 
 main {
-  max-width: 50%;
-  margin: 30px auto;
+  width: 80%;
+  margin: 20px auto;
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   color: black;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 #balance-amount {
@@ -46,7 +45,7 @@ h2 {
 .balance-actions {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 50px;
   align-items: center;
 }
 
@@ -62,7 +61,7 @@ h2 {
 .buttons {
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  gap: 50px;
   margin-top: 10px;
 }
 

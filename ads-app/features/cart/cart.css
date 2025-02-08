@@ -1,11 +1,34 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  main {
-    flex: 1;
-    margin: 0 10%;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbf3fd;
+}
+
+h1 {
+  margin: 40px;
+}
+
+main {
+  margin: 0 10%;
+}
+
+h2 {
+  text-align: right;
+  margin: 40px 15% 20px;
+}
+
+#checkout-button {
+  background-color: #5d0843;
+  color: white;
+  padding: 12px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 30px 10%;
+}
+
+#checkout-button:hover {
+  background-color: #740a57;
+}

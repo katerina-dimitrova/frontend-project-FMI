@@ -1,11 +1,13 @@
-html, body {
-  height: 100%;
+body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  background-color: #fbf3fd;
 }
 
 main {
-  flex: 1;
   margin: 0 10%;
+}
+
+h1 {
+  margin: 40px;
 }

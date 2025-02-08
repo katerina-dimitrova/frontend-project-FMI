@@ -2,38 +2,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 60px;
 }
 
 #search-input {
-  width: 100%;
-  max-width: 300px;
-  padding: 10px;
+  width: 40%;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
 }
 
 #search-button {
-  padding: 10px 15px;
+  padding: 12px 20px;
   margin-left: 10px;
   border: none;
-  background-color: #007bff;
+  background-color: #5d0843;
   color: white;
   border-radius: 5px;
   cursor: pointer;
 }
 
 #search-button:hover {
-  background-color: #0056b3;
+  background-color: #740a57;
 }
 
 #categories-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 .category-item {
@@ -42,16 +40,18 @@
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  margin: 20px;
 }
 
 .category-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .category-icon {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   margin-bottom: 5px;
+  border-radius: 8px;
 }
 
 .category-name {
@@ -63,7 +63,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0;
+  margin: 40px 0;
 }
 
 #price-filter {

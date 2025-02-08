@@ -1,13 +1,14 @@
-html,
 body {
-  height: 100%;
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  background-color: #fbf3fd;
+}
+
+h1 {
+  margin: 40px;
 }
 
 main {
-  flex: 1;
   margin: 0 10%;
 }
 
@@ -33,12 +34,13 @@ body.modal-active #add-container {
 #add-button {
   background-color: #5d0843;
   color: white;
-  padding: 12px 20px;
+  padding: 12px 40px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
+  margin: 30px 10%;
 }
 
 #add-button:hover {
@@ -92,14 +94,4 @@ body.modal-active #add-container {
 
 #add-form button:hover {
   background-color: #0056b3;
-}
-
-#cancel-button {
-  background-color: #e44d26;
-  color: white;
-  margin-top: 5px;
-}
-
-#cancel-button:hover {
-  background-color: #c0392b;
 }

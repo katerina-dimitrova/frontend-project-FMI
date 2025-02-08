@@ -1,10 +1,4 @@
-.content {
-  display: flex;
-  flex: 1;
-}
-
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
@@ -20,6 +14,11 @@ main {
   background: white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  display: flex;
+  flex: 1;
 }
 
 h1 {
@@ -50,12 +49,18 @@ textarea {
 button {
   margin-top: 15px;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #953392;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #560555;
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: inline;
+  }
 }

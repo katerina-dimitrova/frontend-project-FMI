@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0;
   padding: 0;
   background-color: #fbf3fd;
@@ -9,7 +9,6 @@ body{
 main {
   margin: 0 10%;
 }
-
 
 .heading {
   text-align: center;
@@ -42,26 +41,7 @@ main {
   background-color: #740a57;
 }
 
-.categories, .latest-ads {
+.categories,
+.latest-ads {
   margin-top: 20px;
-}
-
-#categories-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.category {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.category:hover {
-  background-color: #0056b3;
 }

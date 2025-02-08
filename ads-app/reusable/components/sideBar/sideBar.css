@@ -1,44 +1,43 @@
-
-#sidebar-container{
-    position: relative;
-    width: 200px;
-    background-color: #b4aeb8;
-    color: white;
-    padding: 40px 20px;
+#sidebar-container {
+  position: relative;
+  width: 200px;
+  background-color: #afa2b3;
+  color: white;
+  padding: 40px 20px;
 }
 
 .sidebar-links {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .sidebar-links li {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 .sidebar-links a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s;
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
 .sidebar-links a:hover {
-    background: #a49da8;
-    cursor: pointer;
+  background: #a49da8;
+  cursor: pointer;
 }
 
 .main {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 
 @media (max-width: 768px) {
-    #sidebar-container {
-        position: static;
-        width: 100%;
-        text-align: center;
-    }
+  #sidebar-container {
+    position: static;
+    width: 100%;
+    text-align: center;
+  }
 }
