@@ -76,7 +76,7 @@ function renderAds() {
 
   const filteredAds = filterFunction
     ? ads.filter(filterFunction)
-    : ads.filter((ad) => !ad.isDeleted && !ad.isSold);
+    : ads.filter((ad) => !ad.isDeleted && !ad.isSold && ad.userEmail !== userEmail);
 
   if (sortOrder === "ascending") {
     filteredAds.sort((a, b) => a.price - b.price);

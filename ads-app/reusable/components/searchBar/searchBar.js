@@ -1,5 +1,7 @@
 import { CATEGORIES } from "../../utils/constants.js";
 
+const userEmail = JSON.parse(localStorage.getItem("token")).userEmail;
+
 export function setupSearchBar(updateFilter) {
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-button");
@@ -14,8 +16,9 @@ export function setupSearchBar(updateFilter) {
 
     const newFilterFunction = query
       ? (ad) =>
-          ad.title.toLowerCase().includes(query) ||
-          ad.description.toLowerCase().includes(query)
+          ad.userEmail !== userEmail &&
+          (ad.title.toLowerCase().includes(query) ||
+          ad.description.toLowerCase().includes(query))
       : null;
 
     updateFilter(newFilterFunction);
@@ -50,7 +53,7 @@ export function setupCategoryFilter(updateFilter) {
     categoryItem.appendChild(name);
 
     categoryItem.addEventListener("click", () => {
-      updateFilter((ad) => ad.category === category);
+      updateFilter((ad) => ad.category === category && ad.userEmail !== userEmail);
     });
 
     categoriesContainer.appendChild(categoryItem);
